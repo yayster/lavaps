@@ -1,0 +1,4 @@
+bin/lavaps
+man/man1/lavaps.1.gz
+@exec chgrp kmem bin/lavaps
+@exec chmod g+s bin/lavaps

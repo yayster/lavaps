@@ -1,0 +1,92 @@
+
+dnl -*-autoconf-*-
+dnl configure.tcltk.ac
+dnl $Id: configure.tcltk.ac,v 1.5 2004/12/25 02:35:11 johnh Exp $
+dnl
+dnl tcl/tk-specific part of configure.in
+dnl
+
+dnl Checks for libraries.
+AC_CHECK_LIB(dl, dlopen)
+dnl
+dnl autoconf is too weak to check for tcl/tk in the obvious ways:
+dnl 1) you need to search for tcl and tcl80 and tcl76..., not just one name
+dnl 2) you need to search in lots of yucky places.
+dnl instead we use a per-host check below
+dnl
+dnl builtin(include, ./conf/configure.in.tcl)
+dnl builtin(include, ./conf/configure.in.tk)
+
+dnl
+dnl Checks for header files.
+dnl check tcl/tk later
+dnl
+dnl AC_HAVE_HEADERS(tcl.h tk.h)
+
+dnl tcl/tk bother because FreeBSD makes things hard by putting versions
+dnl in things.
+AC_ARG_WITH(tcl-ver, --with-tcl-ver=VERSION specify the version of tcl/tk, TCL_VERS=$withval, TCL_VERS=8.3.1)
+TCL_DOTTED_HI_VERS=`echo $TCL_VERS | sed "s/\([[^\.]]*\)\.\([[^\.]]*\).*/\1.\2/"`
+TCL_NODOT_HI_VERS=`echo $TCL_DOTTED_HI_VERS | sed "s/\.//g"`
+AC_ARG_WITH(tk-ver, --with-tk-ver=VERSION specify the version of tcl/tk, TK_VERS=$withval, TK_VERS=8.3.1)
+TK_DOTTED_HI_VERS=`echo $TK_VERS | sed "s/\([[^\.]]*\)\.\([[^\.]]*\).*/\1.\2/"`
+TK_NODOT_HI_VERS=`echo $TK_DOTTED_HI_VERS | sed "s/\.//g"`
+
+AC_ARG_WITH(tcltk-lib-suffix-type, --with-tcltk-lib-suffix-type=TYPE where TYPE is either none/nodot/dot, TCLTK_LIB_SUFFIX_TYPE=$withval,TCLTK_LIB_SUFFIX_TYPE="unspecified")
+
+
+
+dnl
+dnl libraries are below
+dnl
+
+dnl defaults:
+TCLTK_INCLUDES=${PLATFORM_SPECIFIC_TCLTK_INCLUDES:-""}
+TCLTK_LIBS=${PLATFORM_SPECIFIC_TCLTK_LIBS:-"tba"}
+TCLTK_DL_LIB=${PLATFORM_SPECIFIC_TCLTK_DL_LIB:-"-ldl"}
+# handle nulling-out
+if test "x$TCLTK_DL_LIB" = xno
+then
+	TCLTK_DL_LIB=''
+fi
+
+dnl
+dnl System-specific stuff:
+dnl
+AC_MSG_CHECKING([for platform-specific tcl/tk code])
+if test x$TCLTK_LIB_SUFFIX_TYPE = xunspecified
+then
+	TCLTK_LIB_SUFFIX_TYPE=$PLATFORM_DEFAULT_TCLTK_LIB_SUFFIX_TYPE
+	AC_MSG_RESULT([taking default])
+else
+	AC_MSG_RESULT([already specified])
+fi
+
+dnl
+dnl Tcl/tk libraries are a complete nightmare wrt portability.
+dnl
+case $TCLTK_LIB_SUFFIX_TYPE in
+none) TCLTK_LIBS="-ltk -ltcl";;
+nodot) TCLTK_LIBS="-ltk$TK_NODOT_HI_VERS -ltcl$TCL_NODOT_HI_VERS";;
+dot) TCLTK_LIBS="-ltk$TK_DOTTED_HI_VERS -ltcl$TCL_DOTTED_HI_VERS";;
+*) AC_MSG_ERROR(internal error naming tcltk libraries);;
+esac
+TCLTK_LIBS="$TCLTK_LIBS $TCLTK_DL_LIB"
+AC_MSG_CHECKING(tcltk libraries will be)
+AC_MSG_RESULT($TCLTK_LIBS)
+
+
+dnl this is a hack to influence AC_HAVE_HEADERS
+CPPFLAGS="$CPPFLAGS $X_CFLAGS $ADDITIONAL_INCLUDES $TCLTK_INCLUDES"
+AC_HAVE_HEADERS(tcl.h tk.h,true,AC_MSG_ERROR([could not find tcl.h or tk.h
+specify --with-tcl-ver=8.x or --with-tk-ver=8.x or
+with --with-additional-includes=-I/path and/or --with-additional-libs=-L/path.]))
+
+dnl AC_SEARCH_LIBS(Tcl_CreateInterp, tcl tcl$TCL_NODOT_HI_VERS)
+dnl AC_SEARCH_LIBS(Tk_MainLoop, tk tk$TK_NODOT_HI_VERS)
+dnl AC_CHECK_LIB(tcl, Tcl_CreateInterp, LIBS="-ltcl $LIBS",AC_MSG_ERROR([can't find libtcl, specify it with --with-additional-libs=/place/to/libtcl.a]),$LIBS)
+dnl AC_CHECK_LIB(tk, Tk_MainLoop, LIBS="-ltk $LIBS",AC_MSG_ERROR([can't find libtk, specify it with --with-additional-libs=/place/to/libtk.a]),$LIBS $X_LIBS)
+
+dnl
+dnl next line is hack leakage from gtk
+GCONF_SCHEMAS_INSTALL_FALSE='#'

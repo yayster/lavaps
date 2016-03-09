@@ -1,0 +1,120 @@
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/apps/lavaps/who</key>
+      <applyto>/apps/lavaps/who</applyto>
+      <owner>lavaps</owner>
+      <type>string</type>
+      <default>everyone</default>
+      <locale name="C">
+	<short>Whose processes to observe</short>
+	<long>Whose processes to observe.  Options are me or everyone</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/what</key>
+      <applyto>/apps/lavaps/what</applyto>
+      <owner>lavaps</owner>
+      <type>string</type>
+      <default>both</default>
+      <locale name="C">
+	<short>What kind of memory to observe</short>
+	<long>What kind of memory to observe.  Options are physical, virtual, or both.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/autosize</key>
+      <applyto>/apps/lavaps/autosize</applyto>
+      <owner>lavaps</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Autosize blobs relative to memory?</short>
+	<long>Autosize blobs relative to memory?  Should lavaps automatically
+	adjust blob size in proportion to memory usage (true),
+	or should it use a fixed size (false).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/lozenge</key>
+      <applyto>/apps/lavaps/lozenge</applyto>
+      <owner>lavaps</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Show lavaps as a lozenge shape?</short>
+	<long>Show lavaps as a lozenge shape?  Should lavaps 
+	use a lozenge shape, like a traditional lava lamp (true),
+	or should it use a rectangular shape (false).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/base</key>
+      <applyto>/apps/lavaps/base</applyto>
+      <owner>lavaps</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Show base on the lavaps lamp?</short>
+	<long>Show base on the lavaps lamp?  Should the lavaps 
+	lava lamp include a base with menu and resize tabs (true),
+	or not (false).</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/sticky</key>
+      <applyto>/apps/lavaps/sticky</applyto>
+      <owner>lavaps</owner>
+      <type>bool</type>
+      <default>true</default>
+      <locale name="C">
+	<short>Should the lamp stick in all desktops?</short>
+	<long>Should the lamp stick in all desktops?
+	Some window managers support "stickiness",
+	where the window appears in all desktops or viewports (true),
+	or only one viewport (false).
+	(Other window managers may ignore stickiness.)</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/size_mem_to_screen_scale</key>
+      <applyto>/apps/lavaps/size_mem_to_screen_scale</applyto>
+      <owner>lavaps</owner>
+      <type>int</type>
+      <default>30</default>
+      <locale name="C">
+	<short>Scaling factor memory to blob size</short>
+	<long>This option specifies a
+	scaling factor (a multipler) that converts memory size
+	in kilobytes to blob size in screen linear units.
+	No strong numerical relationship of memory to area is 
+	maintained, but a smaller values
+	result in smaller blobs for a constant process memory.
+	This variable is not intended to be directly user-editable.</long>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/lavaps/check_interval</key>
+      <applyto>/apps/lavaps/check_interval</applyto>
+      <owner>lavaps</owner>
+      <type>float</type>
+      <default>2.0</default>
+      <locale name="C">
+	<short>Interval between process scans (in seconds)</short>
+	<long>This option specifies the interval between process scans
+	in seconds.  Smaller values result in more frequent checks
+	and smoother animation but higher overhead,
+	larger values cause less frequent checks and jumpier animation.
+	Check_interval is not intended to be directly user-editable.</long>
+      </locale>
+    </schema>
+
+  </schemalist>
+</gconfschemafile>

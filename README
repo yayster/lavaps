@@ -1,0 +1,509 @@
+NAME
+    lavaps -- a lava lamp of currently running processes
+
+WHAT'S NEW
+  25-Dec-04 2.7  This release is primarily a bug-fix release.
+    NEW: new window icon added (I finally got a window manager that
+    shows it :-).
+
+    NEW DOCUMENTATION: added descriptions of how to get the RPMs and
+    Debian packages for Linux users. (Thanks to Ashley Howes for updating
+    the Debian package.)
+
+    NEW: with Gtk, lavaps now displays the standard gtk options. As a
+    result, all options in gtk-mode now require two dashes.
+
+    BUG FIX: the blob autoscaling code has been re-written. It should
+    now automatically and quickly find the proper sizing in default
+    setups. It should also correctly handle some cases where before it
+    would display "mem shrink" infinitely.
+
+    BUG FIX: cleanup of change_tracking templates to satisfy gcc-3.4's
+    new C++ requirements. Patch contributed by Andreas Jochens.
+
+    BUG FIX: fix a crash in STL, eventually from
+    process_list::reap_unfounds. Bug identified by Mikhail Teterin
+
+    BUG FIX: fix compile problems in change_tracking.hh. Thanks to
+    Mikhail Teterin for discovering the problem and submitting a patch.
+
+    BUG FIX: fix compilation problems in building against Tcl/Tk,
+    patches adapted from those sent by Ashley T. Howes.
+
+    BUG FIX: redid the po/Makefile handling to hopefully be non-dumb.
+
+DESCRIPTION
+    LavaPS is an interactive process-tracking program like ``top'',
+    but with a much different attitude. Rather than presenting lots of
+    specific info in digital form, it tries to present certain important
+    information in a graphical analog form. The idea is that you can
+    run it in the background and get a rough idea of what's happening
+    to your system without devoting much concentration to the task.
+
+    LavaPS was inspired by Mark Weiser's idea of calm computing in
+    this paper:
+
+    * ``The Coming Age of Calm Technology'' by Mark Weiser
+    and John Seely Brown. A revised version of Weiser and
+    Brown. ``Designing Calm Technology'', PowerGrid Journal, v 1.01,
+    http://powergrid.electriciti.com/1.01 (July 1996). October, 1996.
+    http://www.ubiq.com/hypertext/weiser/acmfuture2endnote.htm.
+
+    (This program dedicated to the memory of M.W.--I hope you would have
+    thought it a good hack.)
+
+REQUIREMENTS
+    Building LavaPS requires C++, STL, and either Tcl/Tk (8.x) or
+    Gnome/Gtk (2.2 or later). LavaPS is necessarily system-specific. It
+    currently runs under Linux, FreeBSD, Solaris, Irix, AIX, NetBSD,
+    and MacOS X. Ports to other systems are encouraged.
+
+AVAILABILITY
+    The latest version of LavaPS should always be available from
+    http://www.isi.edu/~johnh/SOFTWARE/LAVAPS/.
+
+    Mailing lists for LavaPS are
+
+            lavaps-announce@heidemann.la.ca.us and
+            lavaps-talk@heidemann.la.ca.us
+
+    To subscribe to either, send mail with "subscribe" in the *BODY*
+    of the message to:
+
+            lavaps-announce-request@heidemann.la.ca.us or
+            lavaps-talk-request@heidemann.la.ca.us.
+
+RELEASE HISTORY
+  21-Mar-99 1.0
+    Initial release to a few friends. Runs on Linux and FreeBSD.
+
+  29-May-99 1.1
+    Fix some Linux build bugs
+
+  6-Aug-99 1.2
+    Portability, correctness, and warning fixes for FreeBSD from Ted
+    Faber.  (Thanks!)
+
+    I fixed the space leak...previously blobs only got bigger, never
+    smaller, so eventually the whole lamp filled up with emacs.
+
+    Added support for selecting VM or physical memory.
+
+    Version now shows up in about.
+
+    There's a lingering bug: sometimes I get into an infinite loop on
+    some blobs. I catch it and break out, but you'll see error messages.
+
+  20-Aug-99 1.3
+    Mailing lists for LavaPS are
+
+            lavaps-announce@heidemann.la.ca.us and
+            lavaps-talk@heidemann.la.ca.us
+
+    To subscribe to either, send mail with "subscribe" in the *BODY*
+    of the message to:
+
+            lavaps-announce-request@heidemann.la.ca.us or
+            lavaps-talk-request@heidemann.la.ca.us.
+
+    Splash text now stays on top of any blobs.
+
+    Fixed some blob ordering bugs (and made all redrawing lazy), but
+    probably introduced some more bugs.
+
+    Changed hash function arbitrarily to make Netscape, emacs, and Vmware
+    not all be different shades of green.
+
+    Preliminary resource support (only xdb, not .Xdefaults): set
+    lavaps.geometry, .what, .who. (Bug: what/who don't work currently.)
+
+    Can display both physical and virtual memory at the same time.
+
+  6-Sep-99 1.4
+    Bugfixes in ``both'' mode: a sev-1 problem with leaking blobs and
+    a problem where a default resource "lavaps.what: both" didn't work.
+
+    Internal process-to-blob API is now absolute, hopefully reducing
+    gradual blob expansion over time (when the program runs for
+    weeks). Also, I fixed a bunch of internal places where size could
+    leak.
+
+    Info about processes now includes user names in addition to user ids.
+
+    Autoresizing!
+
+    Autoresizing revealed a bunch of corner cases with blob sizing.
+    Hopefully they're all now fixed.
+
+    To nail ``any'' remaining bugs, a whole bunch of validation code is
+    turned on. This makes things run slower and will mostly be turned
+    off in the next week.
+
+  8-Sep-99 1.5
+    Make install bug fixed on systems where it's not installed setgid.
+    (Thanks to Mark Yarvis for identifying the problem.)
+
+    A work-around for a FreeBSD header bug from Ted Faber.
+
+    A debug resource (lava.debug) now enables debugging info. Very useful
+    if you think real sizes don't match expected.
+
+    Clicking for info now makes the splash text go away.
+
+    The Tk ``appname'' is now set.
+
+    What I thought was lazy in the 1.3 release, wasn't (due to 3 bugs).
+    Things are better now, and LavaPS should consume less CPU.
+
+  9-Sep-99 1.6
+    Typo in about window fixed (thanks Ted).
+
+    Bug in the splash text repetition suppression fixed (thanks Mark).
+
+    Window resize now does sensible things. Horizontal and vertical
+    orientation is automatically determined.
+
+  13-Sep-99 1.7
+    Fixed a bug created in 1.4 where blobs drift slowly to the left.
+
+    Fixed a bug where resizes (after a while) would crash in
+    blob::redraw_all().
+
+    Documentation: a man page, and the README and internal help are all
+    generated from a central source.
+
+  12-Oct-99 1.8
+    Fixed an inefficiency where resizing happened more frequently than
+    it needed to.
+
+    Fixed several typos in the documentation.
+
+    Fixed a bug in using -fpermissive on FreeBSD.
+
+    Rolled a RedHat RPM.
+
+    Fixed a FreeBSD port.
+
+  27-Dec-99 1.9 (the millennial release)
+    The X resource lavaps.pollInterval now sets how frequently to check
+    process status. Suggested by Hue-Bond hue@cyberchat2000.com.
+
+    The licenses on tcl2cc.c and color.c have been changed to GPL (thanks
+    to Ron Frederick and Jamie Zawinski for releasing their code, and
+    Tommi Virtanen of the Debian Project for pointing out these possibly
+    problematic licenses).
+
+    Shrinking-on-startup bug fixed with tkstep.
+
+    Some standard command-line arguments now work: -display and -geometry.
+
+    LavaPS triggers a memory leak on some Debian systems (see bug #49828
+    in their database). The problem appears to be in a library, not in
+    LavaPS, so I cannot fix it.
+
+  11-Feb-00 1.10
+    The LavaPS memory leak under Debian Linux (but not on RedHat or
+    FreeBSD, see Debian bug #49828 for details) has been found. The good
+    news is that the Tcl/Tk Debian port maintainer has found the problem
+    (in a patch against stock Tcl/Tk-8.0.5) and it should be fixed in
+    their next release (thanks Kirk!).
+
+    Pop-up windows near the edge of the screen now are adjusted to stay
+    on the screen. (Bug raised by Brett Neely and Michael Talarczyk.)
+
+    Solaris port contributed from Alan Coopersmith.
+
+  3-Jun-00 1.11
+    Configuration handling slightly changed (config.h.in added).
+    --with-tcltk-lib-suffix-type={dot,nodot,none} now lets you control
+    what the libraries are called (they seem to vary a lot).
+
+    Port to Solaris 2.5.1 contributed from Angus Mackay.
+
+    The display can now be lozenge-shaped (the way a real lava lamp is).
+    This is controlled by the "lozenge" resource.
+
+    FreeBSD now drops setgid privileges (patch from Kris Kennaway).
+
+    Fixed bugs in handling .lavapsrc files.
+
+    In some cases LavaPS would go into infinite blob growth or shrinkage.
+    Bug and fix applied from Nick Bailey.
+
+  5-Jun-00 1.12
+    Process control (nice, renice, kill) added.
+
+    Some of the "halo" around lozenge windows fixed.
+
+  6-Jun-00 1.13
+    Dependence on an external ``whoami'' program removed.
+
+    Process name added to proc menu (suggested by Mark Yarvis).
+
+    Gcc-2.95.2 compilation problem work-around (since 1.11).
+
+    Handling of window decorations (the ``halo'' bug) mostly cleaned up
+    (it works on at least fvwm2, enlightenment, and kde (kwm?)).
+
+  27-Jul-00 1.14
+    Shaped windows can now be disabled completely. (Change suggested by
+    Mark Yarvis.)
+
+    Patch to work around a compiler bug triggered in tcl_blob.cc on the
+    line: Tcl_SetResult(interp, shaped_window_ok() ? "1" : "0", NULL);
+    (Problem raised by Andrew Moise and Brian Bresen.)
+
+    Patch to lavaps.spec to allow builds by unprivileged users based on
+    contribution by Chris Dent.
+
+    Fix to Solaris build problem (process_scan multiply defined) from
+    Donald Hutcheon.
+
+    FAQ-like "How do I" section added to the documentation.
+
+  29-Jul-00 1.15
+    Fix for the "infinite growth on start" bug that occurred if no
+    geometry was specified (reported by Kees Cook and Jeremy Brooks).
+
+  19-Apr-01 1.16
+    NEW: memory sizes now are self-scaling (141MiB rather than 144660KB),
+    like GNU df ``-h'' and use the IEC power-of-two abbreviations (like
+    KiB == kibibytes, see http://physics.nist.gov/cuu/Units/binary.html
+    for what those are).
+
+    BUG FIX: signaling text neatened up from a suggestion from Alan
+    Schmitt alan.schmitt@inria.fr.
+
+    NEW: Johann Visagie, "johann@egenetics.com", is the new maintainer
+    of the FreeBSD port of LavaPS.
+
+    BUG FIX: fixes compile bug in 1.15 on Linux 1.15 (reported by Simon
+    Schoar simon@schoar.de).
+
+  31-May-01 1.17
+    BUG FIX: Several people have reported problems with lozenge mode
+    having a black border around it, although I didn't observe the
+    problem. With sawfish-0.36 I now see the problem and developed a
+    work-around. If anyone out there really understands shaped windows,
+    please let me know.
+
+  24-Jul-01 1.18
+    BUG FIX: Configure fix for gcc 3.0. (There are still warnings in
+    some of the platform-specific code, though.) (Problem detected by
+    Murray Smigel.)
+
+  15-Aug-01 1.19 (the "congratulations to Karen" release)
+    NEW: Port to AIX contributed by Nigel Griffiths of IBM U.K.
+
+    BUG FIX: Another fix for STL with gcc-3.0 (namespace issues).
+
+  30-Oct-01 1.20
+    NEW: Port to NetBSD contributed by Hubert Feyrer, the NetBSD lavaps
+    port maintainer.
+
+    BUG FIX: applied patch from Timo Korvola to make the info popup not
+    use the window manager.
+
+  19-Apr-03 1.21
+    BUG FIX: ported to more recent automake and autoconf.
+
+    NEW: now builds on gcc-3.1/3.2 systems including RedHat Linux 8.0
+    and 9.
+
+    NEW: should now build on FreeBSD 5.0.
+
+  21-Jun-03 2.0
+    NEW: now uses the Gnome toolkit, optionally. (Tcl/Tk is still
+    supported by default, but the default will change in 2.1.)
+
+    Thanks to Michael Meeks and John (J5) Palmieri for help getting
+    menus right.
+
+    The following features are currently missing from the gtk port:
+    resources, rc files, rounded blobs. Support for these features should
+    come in the next release.
+
+    NEW: MacOS X support contributed by Kevin Geiss.
+
+    BUG FIX: info windows should now be on top on the few window managers
+    that require help (bug report and fix from Kevin Geiss).
+
+    A note about the 2.0 release: Lavaps-2.0 is a "quiet" release. It has
+    two big new features: MacOS X support and Gnome/Gtk-2.2 support.
+    Unfortunately, the Gtk support is not 100% complete. However,
+    I wanted to get it out to get feedback from folks about the Gtk
+    part, particularly about portability issues. I'd prefer that this
+    version not go in any "distributions" (CD-ROMs, ports trees, etc.),
+    but I would like feedback from any individuals who want to try it
+    out. Expect 2.1 within a month with complete Gtk support.
+
+  3-Jul-03 2.1
+    NEW: now uses the Gnome toolkit, optionally. (Tcl/Tk is still
+    supported via configure --with-tcltk.) (Partial support was in
+    lavaps-2.0.)
+
+    NEW and BUG FIX: MacOS X support contributed by Kevin Geiss. (Partial
+    support was in lavaps-2.0, but important bug fixes in this release.)
+
+    NEW: In gtk, blobs are now smooth. (Missing feature.)
+
+    NEW: In gtk, there is now a *base* to the lava lamp. The base
+    allows you to move and resize the lamp, and provides a menu popup
+    button. This feature is for the many people now using window managers
+    that only let you resize based on window manager decorations that
+    don't exist in a shaped lavaps window.
+
+    BUG: gtk cannot save settings. Hopefully fixed in the next release.
+
+  15-Jul-03 2.2
+    SEMI-NEW: now uses the Gnome toolkit, optionally. (Tcl/Tk is still
+    supported via configure --with-tcltk.) (Partial support was in since
+    lavaps-2.0, compelte support as of 2.2.) Also, the gtk-version now
+    has a *base* to the lava lamp (since 2.1).
+
+    BUG FIXES: Continued tuning of gtk front end. (Better icons on the
+    base; better smoothing.)
+
+    BUG FIX: gtk can now save settings (fixes the last deficency of the
+    gtk-based front-end as compared to old Tcl/Tk-based version).
+
+    NEW: can now control the scan frequency from the How menu
+    (jumpier/smoother).
+
+    NEW: now saves the scaling factor automatically (no more ~25
+    "shrinking" messages when you start lavaps up).
+
+  16-Jul-03 2.3
+    BUG FIX: Fix an ownership bug in the 2.2 installation.
+
+  25-Sep-03 2.4
+    PORTABILITY FIX: Better detection of snprintf and other compile issues
+    on SuSe Linux and with gcc-3.3 (problem pointed out by Stephan Beal).
+    Note: to build with SuSE Linux 8.2, run
+
+            ./configure --with-tcltk-lib-suffix-type=dot
+            --with-tcl-ver=8.4 --with-tk-ver=8.4
+
+    Sorry, I'm not going to write the infinite amount of configure hacks
+    needed to detect Tcl's many strange configurations :-(
+
+  6-Jun-04 2.5
+    NEW: LavaPS is now internationalized with gettext support, and
+    localized for English, Spanish, and Russian. (Translations to other
+    languages are invited!) (Thanks to an anonymous contributor for the
+    Russian translation.)
+
+    Internationalization is the last major feature I had in mind when
+    going to version 2.x, so I'm now willing to consider adding new
+    features.
+
+    NEW (internal): source code now uses automake-style multiple
+    directories.
+
+    BUG FIX: The Gtk version now handles -geometry again. (Bug reported
+    by John West.)
+
+  1-Jul-04 2.6
+    BUG FIX: Lavaps no longer gives this warning on some systems on
+    startup: (lavaps:31794): GConf-CRITICAL **: file gconf-value.c:
+    line 1592 (gconf_entry_get_value): assertion `entry != NULL' failed
+
+    BUG FIX: cleaned up the manual page (some stray sections had
+    crept in).
+
+    BUG FIX: The Spanish-language translation was greatly cleaned up by
+    a native speaker. Contributed by Alberto Cerpa.
+
+TO DOS
+    * On Linux, LavaPS doesn't properly track the process names of
+    processes that change at run-time (because it uses /proc/*/stat
+    rather than /proc/*/cmdline). (Bug identified by Murray Smigel.)
+    * Add support to change the font size as an option (feature request
+    by Andrej Ricnik).  * Add a scaling factor to CPU speed. (Also make
+    the default time-step proportional to CPU speed.)  * A --root option
+    to run in the root window. (Unfortunately this isn't as simple as
+    just using wish's -use.)  * Should have an option to label things
+    with the hostname.  * Window shrinks to zero on startup with
+    tkstep installed. (Hopefully gone away?)  * Flag and resource to
+    force/control directionality.  * Show all processes but those by
+    these uids (root, http, etc.). Also some way to exclude the (large)
+    mfs image under FreeBSD, or big X11 processes.  * Set-able default
+    scaling of blob size.  * Should verify that blobs can occupy the
+    whole, whole screen. (Possible bug raised by Mark Yarvis.)  * When
+    things are resizing they should probably maintain some relationship
+    between visual space and memory that is not affected by odd
+    horizontal:vertical ratios.  * Pop-up sliders to adjust scaling.  *
+    Resources to adjust blob border width (suggested by Anthony Thyssen).
+    * The info window should be pinnable (like in OpenLook), and then
+    auto-update. http://www.debian.org/Bugs/db/49/49884.html * The Solaris
+    port needs support for detecting command lines.  * This should work
+    as a Gnome panel applet. It works in Afterstep's panel, but not Gnome
+    1.1.  * Finish clickelessInfo (it doesn't yet work). (Idea suggested
+    by Yermo Lamers).  * Should allow LavaPS to show absolute memory
+    usage, not just relative memory usage (suggested by several people
+    including Johannes Nix).  * Non-linear scaling of memory usage (to
+    accommodate the wide range of process sizes). Suggested by Johannes
+    Nix.  * Option to suppress mem grow/shrink messages. (Suggested
+    by Jerrad Pierce.)  * Background transparency. (Suggested by
+    Jerrad Pierce.)  * Configuration pop-up dialog. (Suggested by
+    Jerrad Pierce.)  * It would be nice if it looked like the lamp was
+    actually filled with fluid and had a light down the bottom. So the
+    background would be shaded with some color that followed a gradient
+    of high intensity at the bottom to low intensity at the top, and
+    this background gradient color would add the blob color of blobs
+    that are floating in the background.  (Suggested by Matth Lowry.)  *
+    Clicking on non-blobs should allow you to move the window. (Suggested
+    by Glenn Alexander.)  * Flag to disable blob borders. (Suggested
+    by Glenn Alexander.)  * Three-dimensional lavaps using OpenGL.
+    * Several bugs remain in the Tcl version and won't be fixed: (a)
+    Lozenge-shaped windows don't always properly draw the border. (b)
+    Lozenge-shaped windows flicker for me on FocusIn/FocusOut events.
+    * Other bugs have also been overtaken by time: (a) LavaPS steals
+    lots of colors on a pseudocolor display. Such displays aren't much
+    used any more.
+
+
+COPYRIGHT
+    LavaPS is Copyright (C) 1998-2003 by John Heidemann.
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License, version 2,
+    as published by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+    USA.
+
+AUTHOR
+    John Heidemann, "johnh@isi.edu".
+
+    The idea of doing a lava lamp arose in discussions with David Taylor
+    at USC. Although he didn't end up taking it on as directed research,
+    the idea of a top-like lava lamp seemed too good not to follow-up on.
+
+    Thanks to two enthusiastic early users (Ted Faber and Mark Yarvis)
+    for encouragement, suggestions, and bits of code.
+
+    LavaPS includes a small amount of code from xscreensaver by M. Dobie,
+    Patrick J. Naughton, and Jamie Zawinski. On Linux it uses Chuck
+    Blake's /proc scanning library. Building LavaPS uses tcl2cc by
+    Ron Frederick, from tclcl (see http://www.isi.edu/nsnam/tclcl/ for
+    details). Thanks to these authors for releasing their code to LavaPS.
+
+    Johann Visagie, "johann@egenetics.com", is the current maintainer
+    of the FreeBSD port.
+
+    Hubert Feyrer "hubert.feyrer@informatik.fh-regensburg.de", is the
+    current maintainer of the NetBSD port.
+
+    Ashley T. Howes "debiandev@ashleyhowes.com" is the current maintainer
+    of the Debian Linux package.
+
+    Thanks to all the port contributors (listed above).
+

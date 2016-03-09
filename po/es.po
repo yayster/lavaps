@@ -1,0 +1,786 @@
+# lavaps.pot
+# $Id: es.po,v 1.15 2004/12/25 02:36:11 johnh Exp $
+# Copyright (C) 2003 John Heidemann
+# This file is distributed under the same license as the lavaps package.
+# John Heidemann <johnh@isi.edu>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lavaps 2.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-12-24 18:38-0800\n"
+"PO-Revision-Date: 2004-12-24 18:38-0800\n"
+"Last-Translator: Alberto Cerpa <cerpa@cs.ucla.edu>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. i.e., me
+#: src/blob.cc:487
+msgid "blob::op: looping limit exceeded, blob "
+msgstr "blob::op: límite de repetición excedido, gota "
+
+#: src/gtk_blob.cc:267
+msgid "bogus gtk_blob::configure_event\n"
+msgstr "tonto gtk_blob::configure_event\n"
+
+#: src/gtk_blob.cc:552
+msgid "LavaPs: Signal Error"
+msgstr "LavaPS: Error de Señal"
+
+#: src/gtk_blob.cc:559
+msgid ""
+"\n"
+"Signal "
+msgstr ""
+"\n"
+"Señal"
+
+#: src/gtk_blob.cc:561
+msgid " to process "
+msgstr " para enviar "
+
+#: src/gtk_blob.cc:563
+msgid " failed.\n"
+msgstr " falló.\n"
+
+#: src/gtk_blob.cc:572
+msgid "signal failed"
+msgstr "señal fallida"
+
+#. splash message
+#: src/gtk_blob.cc:575
+msgid "signaled"
+msgstr "señal enviada"
+
+#: src/gtk_blob.cc:647
+msgid "Internal help system error.\n"
+msgstr "Error interno en el sistema de ayuda\n"
+
+#: src/gtk_blob.cc:647
+msgid "Error"
+msgstr "Error"
+
+#: src/gtk_blob.cc:806
+msgid "LavaPs Info"
+msgstr "Información de LavaPs"
+
+#: src/gtk_blob.cc:854
+msgid "no process selected"
+msgstr "no hay proceso seleccionado"
+
+#: src/gtk_blob.cc:856
+msgid "_Nice"
+msgstr "_Bajar prioridad"
+
+#: src/gtk_blob.cc:857
+msgid "_Unnice"
+msgstr "_Aumentar prioridad"
+
+#: src/gtk_blob.cc:859
+msgid "_Terminate (politely)"
+msgstr "_Terminar (simpaticamente)"
+
+#: src/gtk_blob.cc:860
+msgid "_Kill (forcefully)"
+msgstr "_Destruir (forzozamente)"
+
+#: src/gtk_blob.cc:861
+msgid "_Stop (suspend)"
+msgstr "_Parar (suspender)"
+
+#: src/gtk_blob.cc:862
+msgid "_Continue (unsuspend)"
+msgstr "_Continuar (resumir)"
+
+#: src/gtk_blob.cc:863
+msgid "_Hang up"
+msgstr "_Desconectar"
+
+#: src/gtk_blob.cc:867
+msgid "my jobs\n"
+msgstr "mis procesos\n"
+
+#: src/gtk_blob.cc:868
+msgid "all jobs\n"
+msgstr "todos los procesos\n"
+
+#: src/gtk_blob.cc:871
+msgid "_Me"
+msgstr "_Yo"
+
+#: src/gtk_blob.cc:872
+msgid "_Everyone"
+msgstr "_Todo el mundo"
+
+#: src/gtk_blob.cc:881
+msgid "virtual mem\n"
+msgstr "memoria virtual\n"
+
+#: src/gtk_blob.cc:882
+msgid "physical mem\n"
+msgstr "memoria física\n"
+
+#: src/gtk_blob.cc:883
+msgid "both mem\n"
+msgstr "ambas memorias\n"
+
+#: src/gtk_blob.cc:886
+msgid "_Virtual Memory"
+msgstr "Memoria _Virtual"
+
+#: src/gtk_blob.cc:887
+msgid "_Physical Memory"
+msgstr "Memoria _Física"
+
+#: src/gtk_blob.cc:888
+msgid "_Both"
+msgstr "_Ambas Memorias"
+
+#: src/gtk_blob.cc:897
+msgid "toggle autosizing\n"
+msgstr "cambio tamaño automático\n"
+
+#: src/gtk_blob.cc:898
+msgid "shrink mem\n"
+msgstr "reducir memoria\n"
+
+#: src/gtk_blob.cc:899
+msgid "grow mem\n"
+msgstr "aumentar memoria\n"
+
+#: src/gtk_blob.cc:900
+msgid "smoother\n"
+msgstr "mas suave\n"
+
+#: src/gtk_blob.cc:901
+msgid "jumpier\n"
+msgstr "mas saltos\n"
+
+#: src/gtk_blob.cc:902
+msgid "toggle lozenge\n"
+msgstr "cambio de diamante\n"
+
+# lozenge??  Is this like a diamond or a pill?  I don't know the context? - Al
+#: src/gtk_blob.cc:903
+msgid "toggle base\n"
+msgstr "cambio de soporte\n"
+
+#: src/gtk_blob.cc:904
+msgid "toggle stickiness\n"
+msgstr "cambio de adherencia\n"
+
+#: src/gtk_blob.cc:907
+msgid "_Autosizing"
+msgstr "_Tamaño automatico"
+
+#: src/gtk_blob.cc:908
+msgid "_Shrink"
+msgstr "_Reducir"
+
+#: src/gtk_blob.cc:909
+msgid "_Grow"
+msgstr "_Aumentar"
+
+#: src/gtk_blob.cc:911
+msgid "S_moother"
+msgstr "Mas _Suave"
+
+#: src/gtk_blob.cc:912
+msgid "_Jumpier"
+msgstr "Mas S_altos"
+
+#: src/gtk_blob.cc:914
+msgid "_Lozenge"
+msgstr "Con _Diamante"
+
+#: src/gtk_blob.cc:915
+msgid "_Based"
+msgstr "Con So_porte"
+
+#: src/gtk_blob.cc:916
+msgid "_Sticky"
+msgstr "P_egajoso"
+
+#: src/gtk_blob.cc:921
+msgid "_About..."
+msgstr "_Acerca de..."
+
+#: src/gtk_blob.cc:922
+msgid "_Basics..."
+msgstr "_Basico..."
+
+#: src/gtk_blob.cc:923
+msgid "_Menus..."
+msgstr "_Menúes..."
+
+#. GNOMEUIINFO_ITEM_DATA("_Resources...", NULL, gtk_blob::menu_help_callback, (void*)"resources", NULL),
+#. GNOMEUIINFO_ITEM_DATA("_How do I...", NULL, gtk_blob::menu_help_callback, (void*)"howdoi", NULL),
+#: src/gtk_blob.cc:926
+msgid "_Copyright..."
+msgstr "_Copyright..."
+
+#: src/gtk_blob.cc:931
+msgid "_Proc"
+msgstr "_Proceso"
+
+#: src/gtk_blob.cc:932
+msgid "_Who"
+msgstr "_Quien"
+
+#: src/gtk_blob.cc:933
+msgid "Wh_at"
+msgstr "Q_ue"
+
+#: src/gtk_blob.cc:934
+msgid "H_ow"
+msgstr "_Cómo"
+
+#: src/gtk_blob.cc:1063
+msgid "warning: bindtextdomain failed.\n"
+msgstr "advertencia: bindtextdomain falló.\n"
+
+#: src/gtk_blob.cc:1065
+msgid "warning: bind_textdomain_codeset failed.\n"
+msgstr "advertencia: bind_textdomain_codeset falló.\n"
+
+#: src/gtk_blob.cc:1067
+msgid "warning: textdomain failed.\n"
+msgstr "advertencia: textdomain falló.\n"
+
+#: src/gtk_blob.cc:1075
+msgid "LavaPS"
+msgstr "LavaPS"
+
+#: src/gtk_blob.cc:1108
+#, fuzzy
+msgid "warning: could not parse --geometry option: "
+msgstr "advertencia: no pude entender la opción de geometria «--geometry»"
+
+#: src/gtk_blob_conf.cc:94
+msgid "lavaps warning: gconf callback on unknown key "
+msgstr ""
+"advertencia de lavaps: funcion de retorno de gconf con llave desconocida "
+
+#: src/gtk_blob_conf.cc:114 src/gtk_blob_conf.cc:248
+msgid "lavaps warning: gconf key "
+msgstr "advertencia de lavaps: gconf llave "
+
+#: src/gtk_blob_conf.cc:115
+msgid " is wrong type ("
+msgstr " es de tipo incorrecto ("
+
+#: src/gtk_blob_conf.cc:117
+msgid " expected, but got "
+msgstr " esperaba, pero recibí "
+
+#: src/gtk_blob_conf.cc:119
+msgid "), so instead using default.\n"
+msgstr "); uso el valor típico en su lugar.\n"
+
+#: src/gtk_blob_conf.cc:249
+msgid " has unknown value "
+msgstr " tiene un valor desconocido "
+
+#: src/gtk_blob_conf.cc:251
+msgid ", so instead using default.\n"
+msgstr ", por lo tanto uso el valor típico en su lugar.\n"
+
+#: src/gtk_lava_help.cc:8
+#, fuzzy
+msgid ""
+"\n"
+"<big>Lavaps 2.7</big>\n"
+"\n"
+"Copyright (C) 1998-2004 by John Heidemann. All rights reserved. Comments to "
+"<tt>johnh@isi.edu</tt>, latest version at <tt>http://www.isi.edu/~johnh/"
+"SOFTWARE/LAVAPS/</tt>.\n"
+"\n"
+"\n"
+"<big>Description</big>\n"
+"\n"
+"LavaPS is an interactive process-tracking program like ``top'', but with a "
+"much different attitude.  Rather than presenting lots of specific info in "
+"digital form, it tries to present certain important information in a "
+"graphical analog form.  The idea is that you can run it in the background "
+"and get a rough idea of what's happening to your system without devoting "
+"much concentration to the task.\n"
+"\n"
+"LavaPS was inspired by Mark Weiser's idea of calm computing in this paper:\n"
+"\n"
+"*  ``The Coming Age of Calm Technology'' by Mark Weiser and John Seely "
+"Brown. A revised version of Weiser and Brown. ``Designing Calm Technology'', "
+"PowerGrid Journal, v 1.01, <tt>http://powergrid.electriciti.com/1.01</tt> "
+"(July 1996). October, 1996.  <tt>http://www.ubiq.com/hypertext/weiser/"
+"acmfuture2endnote.htm</tt>.\n"
+"\n"
+"(This program dedicated to the memory of M.W.--I hope you would have thought "
+"it a good hack.)\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"\n"
+"<big>Lavaps 2.7</big>\n"
+"\n"
+"Copyright (C) 1998-2004 por John Heidemann.  Todos los derechos reservados. "
+"Envia tus comentarios a <tt>johnh@isi.edu</tt>, ls última versión se puede  "
+"encontrar ena <tt>http://www.isi.edu/~johnh/SOFTWARE/LAVAPS/</tt>.\n"
+"\n"
+"Traducido por John Heidemann y Alberto Cerpa\n"
+"\n"
+"\n"
+"<big>Descripción</big>\n"
+"\n"
+"LavaPS es una programa interactivo para rastrear procesos similar a «top», "
+"pero con un actitud muy differente. En vez presentar mucha información en "
+"forma digital, LavaPS trata de presentar información importante en una forma "
+"analógica y gráfica.  La idea es que uno puede correr el programa en el "
+"fondo, y obtener una idea aproximada de lo que sucede en el sistema sin "
+"prestar mucha atencion en la tarea.\n"
+"\n"
+"LavaPS fue inspirado por la idea de Mark Weiser de procesar tranquilo en "
+"este trabajo:\n"
+"\n"
+"*  «The Coming Age of Calm Technology» por Mark Weiser y John Seely Brown. "
+"Una versión revisada de Weiser and Brown, «Designing Calm Technology», "
+"PowerGrid Journal, v 1.01, <tt>http://powergrid.electriciti.com/1.01</tt> "
+"(Julio 1996). Octubre, 1996.  <tt>http://www.ubiq.com/hypertext/weiser/"
+"acmfuture2endnote.htm</tt>.\n"
+"\n"
+"(Este programa es dedicado a la memoria de M.W.--espero que hubieras "
+"considerado que este programa es un buen hack.)\n"
+"\n"
+"\n"
+
+#: src/gtk_lava_help.cc:16
+msgid "Lavaps"
+msgstr "Lavaps"
+
+#: src/gtk_lava_help.cc:20
+msgid ""
+"\n"
+"<big>Controlling Lavaps</big>\n"
+"\n"
+"Basic LavaPS is quite simple. Blobs live and grow corresponding to processes "
+"in the system (see <i>\"BLOBS\"</i>). Clicking the left mouse button on a "
+"blob shows information about that process. Clicking the right mouse button "
+"pops up menus that let you control LavaPS (see <i>\"MENUS\"</i>). The \"base"
+"\" at the bottom of the lamp includes icons for the menus and resizing, and "
+"allows one to move the lamp around.\n"
+"\n"
+"\n"
+"<big>Blobs</big>\n"
+"\n"
+"LavaPS is all about blobs of virtual, non-toxic lava. Blobs in LavaPS "
+"correspond to processes in the system. When a process is started, a new blob "
+"is created. When a process exits, the corresponding blob disappears. Blob "
+"size is proportional to the amount of memory the process uses. Blob movement "
+"is proportional to the amount of time the process runs (if the process never "
+"runs, the blob will never move).\n"
+"\n"
+"Blobs show several things. First, the basic color (the hue) corresponds to "
+"the name of the program which is running.  Emacs is always one color, "
+"Netscape another (on my system, blue and yellow). Second, blobs get darker "
+"when the process doesn't run. Over time, the process will become nearly "
+"black and only  its border will remain colored. Finally, if both physical "
+"and virtual memory are shown, then the part of the process will be a "
+"slightly different color showing what percentage of the process is not in "
+"physical memory.\n"
+"\n"
+"There are some more subtle aspects of blob physiology: initial placement is "
+"dependent on the process id (blobs appear roughly left to right) and user id "
+"(processes for the same user start at the same height, with root's processes "
+"at the top).\n"
+"\n"
+"Blobs also move along the longer distance of the lamp: if you resize it they "
+"may change direction.\n"
+"\n"
+"Please don't ask me about the chemical composition of the virtual lava.\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"\n"
+"<big>Manajando LavaPS</big>\n"
+"\n"
+"LavaPS básico es simple.  Las gotas que viven y crecen corresponden a los "
+"procesos en su computadora (ver <i>\"GOTAS\"</i>).  Cliqueando con el botón "
+"izquierdo del raton en una gota muestra la información sobre ese proceso.  "
+"Cliqueando con el botón derecho del raton aparecen los menúes de LavaPS (ver "
+"<i>\"MENUS\"</i>).  El «soporte» en el fondo de la lámpara incluye iconos "
+"para los menúes, para la clasificación según el tamaño, y permite que uno "
+"mueva la lámpara alrededor.\n"
+"\n"
+"<big>Gotas</big>\n"
+"\n"
+"LavaPS es escencialmente acerca de las gotas de lava virtual, no tóxica.  "
+"Las gotas en LavaPS corresponden a los procesos en su computadora.  Cuando "
+"un proceso nuevo arranca, se crea una nueva gota.  Cuando un proceso "
+"termina, la gota correspondiente desaparece.  El tamaño de la gota es "
+"proporcional a la cantidad de memoria usada por el proceso.  El movimiento "
+"de la gota es proporcional a la cantidad de tiempo que el proceso corre (si "
+"el proceso nunca corre, la gota nunca se mueve).\n"
+"\n"
+"Las gotas demuestran varias cosas.  Primero, el color básico (la tonalidad) "
+"corresponde al nombre del programa que está corriendo.  Emacs es siempre de "
+"un color, Netscape de otro (en mi sistema, azul y amarillo).  En segundo "
+"lugar, las gotas se tornan mas oscuras cuando el proceso no corre.  Con el "
+"tiempo, el proceso llegará a ser casi negro y solamente sus bordes seguirán "
+"coloreados.  Finalmente, si las memorias física y virtual son mostradas, "
+"entonces una parte del proceso se muestra en un color levemente diferente "
+"mostrando que porcentaje del proceso no se encuentra en la memoria física.\n"
+"\n"
+"Hay mas aspectos sutiles de la fisiología de las gotas:  la posición inicial "
+"depende del identificador del proceso (las gotas aparecen aproximadamente de "
+"izquierda a derecha) y la identificación del usuario (los procesos para el "
+"mismo usuario comienzan a la misma altura, con los procesos del super-"
+"usuario (root) arriba de todo).\n"
+"\n"
+"Las gotas también se mueven a lo largo de la distancia mas larga de la "
+"lámpara:  si usted cambia el tamaño de la lámpara, las gotas pueden cambiar "
+"la dirección de movimiento.\n"
+"\n"
+"Por favor no me pregunte acerca de la composición química de la lava "
+"virtual.\n"
+
+#: src/gtk_lava_help.cc:29
+msgid "Controlling Lavaps"
+msgstr "Manajeando Lavaps"
+
+#: src/gtk_lava_help.cc:33
+#, fuzzy
+msgid ""
+"\n"
+"<big>Menus</big>\n"
+"\n"
+"The right mouse button pops up menus which control LavaPS, including:\n"
+"\n"
+"<b>Proc</b>: control the process under the menu: ``Nice'' it (make it take "
+"less CPU), unnice it (the reverse; only works if you're root), or send it a "
+"signal. Signals are terminate (the polite way to stop a process; "
+"``terminate'' allows it to clean up after itself), kill (the forcefully way "
+"to stop something not listening to terminate), stop and continue "
+"(temporarily stop and resume the process), and hang-up (used to restart "
+"certain processes). Beware that these commands will be disabled if you don't "
+"have privileges to run them, and under some circumstances even ``kill'' "
+"won't stop a process.\n"
+"\n"
+"<b>Who</b>: track processes by <i>me</i> or by <i>everyone</i> (including "
+"root, httpd, etc.).\n"
+"\n"
+"<b>What</b>: track process physical or virtual memory or both. Most modern "
+"operating systems can keep all of a process in RAM (physical memory), or can "
+"let pages that aren't currently used float out to disk (virtual memory). "
+"Virtual memory is always a superset of physical memory. You can track either "
+"one, or both. When tracking both, virtual memory appears as a different "
+"colored strip down the middle of the process blob.\n"
+"\n"
+"<b>How</b>: general lava lamp details: sizing, speed, and window manager "
+"interaction. Putting too little or too much lava in your lava lamp would "
+"make it boring or overflow. LavaPS therefore usually runs with patent-"
+"pending lava <i>autosizing</i> where blobs fill about a quarter of the lamp. "
+"This feature can be turned off (at your peril) with the How menu. You can "
+"also control the desired size of the blobs (when autosizing is enabled) or "
+"the absolute size of the blobs (when it's not) with the <i>Grow</i> and "
+"<i>Shrink</i> options.\n"
+"\n"
+"Also under How, <i>Jumpier</i> and <i>Smoother</i> control the quality of "
+"lavaps animation. The smoother the animation, the higher the CPU overhead of "
+"lavaps (because of more frequent scans of the process table). Less smooth is "
+"more efficient.\n"
+"\n"
+"<b>Help</b>: you'll have to figure this one out on your own.\n"
+"\n"
+"<b>Quit</b>: this one's even harder than Help.\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"\n"
+"<big>Menúes</big>\n"
+"\n"
+"El botón derecho del ratón hace aparecer los menúes que manejan LavaPS, "
+"incluyendo:\n"
+"\n"
+"<b>Proceso</b>: controle el proceso debajo del menu:  «Bajar la prioridad» "
+"permite bajar la prioridad (para usar menos CPU) o «Aumentar la prioridad» "
+"permite aumentar la prioridad del proceso (solo posible si usted es super-"
+"usuario (root)), o le envía una señal.  Las señales son <i>terminar</i> (la "
+"manera correcta de parar un proceso;  «terminar» permite que el proceso "
+"pueda limpiar todo su estado), <i>matar</i> (la manera mas poderosa para "
+"forzar la terminación de un proceso que no responde a las señales para "
+"terminar), <i>parar</i> y <i>continuar</i> (parar y continuar el proceso "
+"temporalmente), y <i>desconectar</i> (usado para recomenzar ciertos "
+"procesos).  Esté al tanto que estos comandos estarán desabilitados si usted "
+"no tiene privilegios para ejecutarlos, y es posible que en ciertas "
+"circunstancias inclusive «matar» no parará un proceso.\n"
+"\n"
+"<b>Quien</b>:  rastree los procesos <i>suyos</i> o de<i>cualquiera</i> "
+"( incluyendo, super-usuario (root), httpd, etc.).\n"
+"\n"
+"<b>Que</b>:  rastree la memoria física o virtual del proceso o ambas.  La "
+"mayoría de los sistemas operativos modernos pueden mantener todo el proceso "
+"en RAM (memoria física), o pueden dejar en el disco rígido las páginas que "
+"no estan siendo usadas (memoria virtual). La memoria virtual es siempre un "
+"superconjunto de la memoria física.  Usted puede rastrear una, o ambas "
+"memorias.  Al seguir ambas, la memoria virtual aparece como una tira "
+"coloreadaabajo del centro de la gota del proceso.\n"
+"\n"
+"<b>Cómo</b>:  detalles generales de la lámpara de lava:  tamaño, velocidad, "
+"e interacción del encargado de ventana.  Poniendo mucha o poca lava en la "
+"lampara puede hacerla aburrida o saturada. LavaPS por lo tanto funciona "
+"generalmente con la funcion de patente-pendiente de <i>tamaño automático</i> "
+"donde las gotas llenan alrededor de un cuarto de la lámpara. Esta "
+"característica se puede desactivar (a su propio riesgo) con el menu Cómo.  "
+"Usted también puede controlar el tamaño deseado de las gotas (cuando el "
+"tamaño automático esta activado) o el tamaño absoluto de las gotas (cuando "
+"la opcion de tamaño automático no esta activada) con las opciones de "
+"<i>Aumentar</i> y <i>Reducir</i>\n"
+".\n"
+"En el menu Cómo también se puede encontrar el control de <i>Mas Salto</i> y "
+"de <i>Mas Suave</i> para controlar la calidad de la animación de las gotas. "
+"Mientras mas suave es la animación, menor es el costo de proceso de la CPU "
+"(debido a las barridas mas frecuentes de la tabla de procesos).  Menos suave "
+"esmas eficiente\n"
+"\n"
+"<b>Ayuda</b>:  usted tendrá que entender esto por su propia cuenta\n"
+"\n"
+"<b>Salir</b>:  esta opcion es aún su mas difícil que Ayuda.\n"
+"\n"
+
+#: src/gtk_lava_help.cc:43
+msgid "Menus"
+msgstr "Menúes"
+
+#: src/gtk_lava_help.cc:47
+msgid ""
+"\n"
+"<big>Copyright</big>\n"
+"\n"
+"LavaPS is Copyright (C) 1998-2003 by John Heidemann.\n"
+"\n"
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License, version 2, as published "
+"by the Free Software Foundation.\n"
+"\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307, USA.\n"
+"\n"
+"\n"
+"\n"
+msgstr ""
+"\n"
+"<big>Copyright</big>\n"
+"\n"
+"LavaPS is Copyright (C) 1998-2003 by John Heidemann.\n"
+"\n"
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License, version 2, as published "
+"by the Free Software Foundation.\n"
+"\n"
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307, USA.\n"
+"\n"
+"\n"
+"\n"
+
+#: src/gtk_lava_help.cc:53
+msgid "Copyright"
+msgstr "Copyright"
+
+#: src/main.cc:59
+msgid ""
+"usage: lavaps\n"
+"\tUse the about menu for more details,\n"
+"\tor look at the man page with \"man lavaps\".\n"
+"\n"
+msgstr ""
+"uso: lavaps\n"
+"\tUse el menu \"acerca de\" para mas información,\n"
+"\to lea la página del manual con \"man lavaps\".\n"
+"\n"
+
+#: src/main.cc:111
+msgid ""
+"X geometry specification (see \"X\" man page), can be specified once per "
+"window to be opened."
+msgstr ""
+"\"La especificación de la geometría X (vea la página de manual «X») puede "
+"ser \"\n"
+"\"especificada sólo una vez por ventana a ser abierta.\""
+
+#: src/main.cc:112
+msgid "GEOMETRY"
+msgstr "GEOMETRY"
+
+#: src/main.cc:120
+msgid "Enable debugging output."
+msgstr "Hace habilitada salida de debugging"
+
+#: src/main.cc:129 src/main.cc:138
+msgid "Make the lava lamp \"sticky\", appearing in all workspaces."
+msgstr ""
+"Hace la adherencia de la lámpara, ya apericia en todos de los workspaces. xxx"
+
+#: src/main.cc:154
+msgid ""
+"--geometry option requires argument giving X-style geometry specification.\n"
+msgstr ""
+"La opcion «--geometry» necessita un argumento que especifique la geometría "
+"de X.\n"
+
+#: src/process_scan_aix.cc:84 src/process_scan_linux_proc.cc:80
+#: src/process_scan_solaris_2_5.cc:89 src/process_scan_solaris.cc:86
+msgid "cannot open /proc"
+msgstr "no puedo abrir /proc"
+
+#: src/process_scan_bsd.cc:135
+msgid "error opening kvm (probably the program needs to be setgid kmem)\n"
+msgstr ""
+"error abriendo kvm (posiblemente el programa necesita ser setgid kmem)\n"
+
+#: src/process_scan_bsd.cc:138
+msgid "cannot drop privileges\n"
+msgstr "no puedo reducir privilegios\n"
+
+#: src/process_scan_irix.cc:91
+msgid "cannot open /proc/pinfo"
+msgstr "no puedo abrir /proc/pinfo"
+
+#: src/process_scan_mach.cc:174
+msgid "Failure calling sysctl"
+msgstr "error cuando llamo a sysctl"
+
+#: src/process_view.cc:236
+msgid "cmd: "
+msgstr "programa: "
+
+#: src/process_view.cc:237
+msgid "pid: "
+msgstr "pid: "
+
+#: src/process_view.cc:238
+msgid "user: "
+msgstr "usuario: "
+
+#: src/process_view.cc:239
+msgid "nice: "
+msgstr "prioridad: "
+
+#: src/process_view.cc:240
+msgid "virt mem: "
+msgstr "memoria virtual: "
+
+#: src/process_view.cc:243
+msgid "phys mem: "
+msgstr "memoria física: "
+
+#: src/process_view.cc:267
+msgid "[error: overflow]\n"
+msgstr "[error: desbordamiento]\n"
+
+#: src/process_view.cc:378
+msgid "mem grow\n"
+msgstr "aumentar memoria\n"
+
+#: src/process_view.cc:381
+msgid "mem shrink\n"
+msgstr "reducir memoria\n"
+
+#
+# tcl commands won't ever go through gettext,
+# so don't bother translating them
+#
+#: src/tcl_blob.cc:101
+msgid "wrong # args: should be \"lava_tick_\""
+msgstr "wrong # args: should be \"lava_tick_\""
+
+#: src/tcl_blob.cc:124
+msgid "wrong # args: should be \"lava_resize [w h [frameWindow]]\""
+msgstr "wrong # args: should be \"lava_resize [w h [frameWindow]]\""
+
+#: src/tcl_blob.cc:189
+msgid "wrong # args: should be \"lava_id_to_info id\""
+msgstr "wrong # args: should be \"lava_id_to_info id\""
+
+#: src/tcl_blob.cc:196
+msgid "cannot find id"
+msgstr "cannot find id"
+
+#: src/tcl_blob.cc:250
+msgid "unknown VALUE for how"
+msgstr "unknown VALUE for how"
+
+#: src/tcl_blob.cc:282
+msgid "will not signal pid 0"
+msgstr "will not signal pid 0"
+
+#: src/tcl_blob.cc:294
+msgid "signalling error"
+msgstr "signalling error"
+
+#: src/tcl_blob.cc:303
+msgid "unknown KEY"
+msgstr "unknown KEY"
+
+#: src/tcl_blob.cc:308
+msgid "wrong # args: should be \"lava_menu KEY VALUE [VALUE2]\""
+msgstr "wrong # args: should be \"lava_menu KEY VALUE [VALUE2]\""
+
+#: src/tcl_blob.cc:325
+msgid "cannot start tk"
+msgstr "cannot start tk"
+
+#: src/tcl_blob.cc:344
+msgid "error loading bootstrap: "
+msgstr "error loading bootstrap: "
+
+#: src/tcl_blob.cc:349
+msgid "error evaling main: "
+msgstr "error evaling main: "
+
+#: src/tcl_blob.cc:395
+msgid "tcl_blob::~tcl_blob: eval error\n"
+msgstr "tcl_blob::~tcl_blob: eval error\n"
+
+#: src/tcl_blob.cc:512
+msgid "tcl_blob::redraw: buffer overrun.\n"
+msgstr "tcl_blob::redraw: buffer overrun.\n"
+
+#: src/tcl_blob.cc:518
+msgid ""
+"tcl_blob::redraw: eval error\n"
+"script:\n"
+msgstr ""
+"tcl_blob::redraw: eval error\n"
+"script:\n"
+
+#: src/tcl_blob.cc:564
+msgid "tcl_blob::tcl_splash: eval error: "
+msgstr "tcl_blob::tcl_splash: eval error: "
+
+#: src/tcl_blob_shape.cc:178 src/tcl_blob_shape.cc:186
+msgid "XTranslateCoordinates failed\n"
+msgstr "XTranslateCoordinates failed\n"
+
+#~ msgid ""
+#~ "usage: lavaps\n"
+#~ "\tUse the about menu for info.\n"
+#~ msgstr ""
+#~ "modo de empleo: lavaps\n"
+#~ "     Vea el menú \"Acerca de...\" para mas información.\n"

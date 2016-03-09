@@ -1,0 +1,35 @@
+# List of source files containing translatable strings.
+# Copyright (C) 2003 by John Heidemann
+# $Id: POTFILES.in,v 1.1 2003/11/30 23:15:19 johnh Exp $
+
+src/blob.cc
+src/color.cc
+src/compat.cc
+src/dmalloc_support.cc
+src/entry_trace.cc
+src/gtk_blob_base.cc
+src/gtk_blob.cc
+src/gtk_blob_conf.cc
+src/gtk_blob_splash.cc
+src/gtk_compat.cc
+src/gtk_lava_help.cc
+src/gtk_xpms.cc
+src/lava_signal.cc
+src/main.cc
+src/process_list.cc
+src/process_model.cc
+src/process_scan_aix.cc
+src/process_scan_bsd.cc
+src/process_scan_irix.cc
+src/process_scan_linux_proc.cc
+src/process_scan_mach.cc
+src/process_scan_solaris_2_5.cc
+src/process_scan_solaris.cc
+src/process_view.cc
+src/scaled_blob.cc
+src/tcl_blob.cc
+src/tcl_blob_code.cc
+src/tcl_blob_shape.cc
+src/text_blob.cc
+src/user.cc
+

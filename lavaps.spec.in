@@ -1,0 +1,59 @@
+# -*-rpm-spec-*-
+# lavaps.spec.in
+# Copyright (C) 2003 by John Heidemann
+# $Id: lavaps.spec.in,v 1.8 2004/06/07 00:56:38 johnh Exp $
+#
+%define	prefix   %{_prefix}
+%define sysconfdir	/etc
+
+Summary: lavaps -- a lava lamp of currently running processes
+Name: lavaps
+Version: @VERSION@
+Release: %{!?custom_release:1}
+License: GPL
+Group: Applications/System
+Source: http://www.isi.edu/~johnh/SOFTWARE/LAVAPS/lavaps-@VERSION@.tar.gz
+URL:  http://www.isi.edu/~johnh/SOFTWARE/LAVAPS/
+Packager: John Heidemann <johnh@isi.edu>
+BuildRoot: /var/tmp/lavaps-@VERSION@
+
+%description
+Lavaps is an interactive process-tracking program like ``top'', but
+with a much different attitude.  Rather than presenting lots of
+specific info in digital form, it tries to present certain important
+information in a graphical analog form.  The idea is that you can run
+it in the background and get a rough idea of what's happening to your
+system without devoting much concentration to the task.
+
+
+%prep
+%setup
+
+%build
+# xxx: should do --sysconfdir=%{sysconfdir}, too
+./configure --prefix=%{prefix}
+make
+
+%install
+# make prefix=$RPM_BUILD_ROOT%{prefix} sysconfdir=$RPM_BUILD_ROOT%{sysconfdir} install
+%makeinstall
+
+%find_lang %{name}
+
+%clean
+if [ -d $RPM_BUILD_ROOT ]; then rm -rf $RPM_BUILD_ROOT; fi
+
+%files
+%doc README
+%doc COPYING
+%{_bindir}/lavaps
+%{_mandir}/man1/lavaps.1.gz
+%{_sysconfdir}/gconf/*/*
+%{_datadir}/locale/*/*/*
+# next line is a guess...
+
+
+%post
+# Next line seems to be the trend to install defaults.
+# Pretty hacky, IMHO.
+GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source` gconftool-2 --makefile-install-rule %{sysconfdir}/gconf/schemas/lavaps.schemas >/dev/null

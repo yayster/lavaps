@@ -1,0 +1,211 @@
+#!/usr/bin/perl -w
+
+#
+# pod2help
+# $Id: pod2help,v 1.9 2004/06/07 00:57:30 johnh Exp $
+#
+# Copyright (C) 1999 by John Heidemann
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License,
+# version 2, as published by the Free Software Foundation.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
+#
+
+
+
+sub usage {
+    print STDERR <<END;
+usage: $0 [-m mode] sections
+
+Convert pod to my own help format.
+
+This program just does the SUBSET of pod that I needed.
+
+options:
+
+-m MODE	    specify mode (tcl or gtk, default is tcl)
+END
+    exit 1;
+}
+
+use strict;
+
+use Getopt::Long;
+&usage if ($#ARGV >= 0 && $ARGV[0] eq '-?');
+my(%opts);
+&GetOptions(\%opts, qw(k m=s));
+&usage if ($#ARGV < 0);
+my($mode) = $opts{'m'};
+$mode = 'tcl' if (!defined($mode));
+die "$0: unknown mode $mode.\n" if (!($mode eq 'tcl' || $mode eq 'gtk'));
+
+my($section) = $ARGV[0];
+my($over) = 0;
+my($item) = '';
+
+$/ = "\n\n";  # paragraph slurping
+
+my(%HTML_Escapes) = (
+    'amp'	=>	'&',	#   ampersand
+    'lt'	=>	'<',	#   left chevron, less-than
+    'gt'	=>	'>',	#   right chevron, greater-than
+    'quot'	=>	'"',	#   double quote
+
+    "Aacute"	=>	"\xC1",	#   capital A, acute accent
+    "aacute"	=>	"\xE1",	#   small a, acute accent
+    "Acirc"	=>	"\xC2",	#   capital A, circumflex accent
+    "acirc"	=>	"\xE2",	#   small a, circumflex accent
+    "AElig"	=>	"\xC6",	#   capital AE diphthong (ligature)
+    "aelig"	=>	"\xE6",	#   small ae diphthong (ligature)
+    "Agrave"	=>	"\xC0",	#   capital A, grave accent
+    "agrave"	=>	"\xE0",	#   small a, grave accent
+    "Aring"	=>	"\xC5",	#   capital A, ring
+    "aring"	=>	"\xE5",	#   small a, ring
+    "Atilde"	=>	"\xC3",	#   capital A, tilde
+    "atilde"	=>	"\xE3",	#   small a, tilde
+    "Auml"	=>	"\xC4",	#   capital A, dieresis or umlaut mark
+    "auml"	=>	"\xE4",	#   small a, dieresis or umlaut mark
+    "Ccedil"	=>	"\xC7",	#   capital C, cedilla
+    "ccedil"	=>	"\xE7",	#   small c, cedilla
+    "Eacute"	=>	"\xC9",	#   capital E, acute accent
+    "eacute"	=>	"\xE9",	#   small e, acute accent
+    "Ecirc"	=>	"\xCA",	#   capital E, circumflex accent
+    "ecirc"	=>	"\xEA",	#   small e, circumflex accent
+    "Egrave"	=>	"\xC8",	#   capital E, grave accent
+    "egrave"	=>	"\xE8",	#   small e, grave accent
+    "ETH"	=>	"\xD0",	#   capital Eth, Icelandic
+    "eth"	=>	"\xF0",	#   small eth, Icelandic
+    "Euml"	=>	"\xCB",	#   capital E, dieresis or umlaut mark
+    "euml"	=>	"\xEB",	#   small e, dieresis or umlaut mark
+    "Iacute"	=>	"\xCD",	#   capital I, acute accent
+    "iacute"	=>	"\xED",	#   small i, acute accent
+    "Icirc"	=>	"\xCE",	#   capital I, circumflex accent
+    "icirc"	=>	"\xEE",	#   small i, circumflex accent
+    "Igrave"	=>	"\xCD",	#   capital I, grave accent
+    "igrave"	=>	"\xED",	#   small i, grave accent
+    "Iuml"	=>	"\xCF",	#   capital I, dieresis or umlaut mark
+    "iuml"	=>	"\xEF",	#   small i, dieresis or umlaut mark
+    "Ntilde"	=>	"\xD1",		#   capital N, tilde
+    "ntilde"	=>	"\xF1",		#   small n, tilde
+    "Oacute"	=>	"\xD3",	#   capital O, acute accent
+    "oacute"	=>	"\xF3",	#   small o, acute accent
+    "Ocirc"	=>	"\xD4",	#   capital O, circumflex accent
+    "ocirc"	=>	"\xF4",	#   small o, circumflex accent
+    "Ograve"	=>	"\xD2",	#   capital O, grave accent
+    "ograve"	=>	"\xF2",	#   small o, grave accent
+    "Oslash"	=>	"\xD8",	#   capital O, slash
+    "oslash"	=>	"\xF8",	#   small o, slash
+    "Otilde"	=>	"\xD5",	#   capital O, tilde
+    "otilde"	=>	"\xF5",	#   small o, tilde
+    "Ouml"	=>	"\xD6",	#   capital O, dieresis or umlaut mark
+    "ouml"	=>	"\xF6",	#   small o, dieresis or umlaut mark
+    "szlig"	=>	"\xDF",		#   small sharp s, German (sz ligature)
+    "THORN"	=>	"\xDE",	#   capital THORN, Icelandic
+    "thorn"	=>	"\xFE",	#   small thorn, Icelandic
+    "Uacute"	=>	"\xDA",	#   capital U, acute accent
+    "uacute"	=>	"\xFA",	#   small u, acute accent
+    "Ucirc"	=>	"\xDB",	#   capital U, circumflex accent
+    "ucirc"	=>	"\xFB",	#   small u, circumflex accent
+    "Ugrave"	=>	"\xD9",	#   capital U, grave accent
+    "ugrave"	=>	"\xF9",	#   small u, grave accent
+    "Uuml"	=>	"\xDC",	#   capital U, dieresis or umlaut mark
+    "uuml"	=>	"\xFC",	#   small u, dieresis or umlaut mark
+    "Yacute"	=>	"\xDD",	#   capital Y, acute accent
+    "yacute"	=>	"\xFD",	#   small y, acute accent
+    "yuml"	=>	"\xFF",	#   small y, dieresis or umlaut mark
+
+    "lchevron"	=>	"\xAB",	#   left chevron (double less than)
+    "rchevron"	=>	"\xBB",	#   right chevron (double greater than));
+);
+
+&main;
+
+exit 0;
+
+
+
+
+
+
+sub tag {
+    my($name, $value) = @_;
+    if ($name eq 'C' || $name eq 'F') {
+	return "<computer>$value</computer>" if ($mode eq 'tcl');
+	return "<tt>$value</tt>" if ($mode eq 'gtk');
+	die;
+    } elsif ($name eq 'Z') {
+	return '';
+    } elsif ($name eq 'L') {
+	return "<i>$value</i>" if ($mode eq 'gtk');
+	return $value;
+    } elsif ($name eq 'I') {
+	return "<italic>$value</italic>" if ($mode eq 'tcl');
+	return "<i>$value</i>" if ($mode eq 'gtk');
+    } elsif ($name eq 'B') {
+	return "<italic>$value</italic>" if ($mode eq 'tcl');
+	return "<b>$value</b>" if ($mode eq 'gtk');
+    } else {
+	die "unknown tag $name<$value>\n";
+    };
+}
+
+sub output {
+    local($_) = @_;
+
+    s/(\w)<([^>]+)>/tag($1,$2)/ge;
+    s/\n/ /g;
+    s/"/\\"/g if ($mode eq 'gtk');
+    print "$_\n\n" if ($mode eq 'tcl');
+    print "\t\"$_\\n\\n\"\n" if ($mode eq 'gtk');
+}
+
+sub main {
+    print "\tset help($section) {" if ($mode eq 'tcl');
+    print "static gtk_lava_help_text glht_$section(O_(\"$section\"),\n\tN_(\n" if ($mode eq 'gtk');
+
+    my($first_title) = undef;
+    while (<STDIN>) {
+	chomp;
+	s/^\n//g;
+	if (!/^=/) {
+	    output($_);
+	    next;    
+	};
+	s/^=(\S+)\s*(.*)$//m;
+	my($cmd, $args) = ($1, $2);
+	my($rest) = $_;
+	# directives
+	if ($cmd eq 'head1') {
+	    my($title, $w) = '';
+	    foreach $w (split(/ /, $args)) {
+		$title .= ucfirst(lc($w)) . " ";
+	    };
+	    $title =~ s/ $//;
+	    print "\n<big>$title</big>\n\n" if ($mode eq 'tcl');
+	    print "\t\"\\n<big>$title</big>\\n\\n\"\n" if ($mode eq 'gtk');
+	    $first_title = $title if (!defined($first_title));
+	} elsif ($cmd eq 'over') {
+	    $over = $args;
+	} elsif ($cmd eq 'back') {
+	    $over = 0;
+	} elsif ($cmd eq 'item') {
+	    $item = $args;
+	    output("$item\n$rest");
+	} else {
+	    die "unknown cmd ``$cmd''.\n";
+	};
+    };
+    die "$0: unknown title.\n" if (!defined($first_title) && $mode eq 'gtk');
+    print "\t), N_(\"$first_title\"));\n\n" if ($mode eq 'gtk');
+
+    print "}\n" if ($mode eq 'tcl');
+}
